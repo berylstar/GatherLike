@@ -9,6 +9,8 @@ public class BulletScript : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D bc;
 
+    private bool onWall = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,11 +20,24 @@ public class BulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Wall"))
-            Destroy(this.gameObject);
+        {
+            onWall = true;
+            StartCoroutine(DestroyTime());
+        }
+            
     }
 
     private void Update()
     {
+        if (onWall)
+            return;
+
         transform.Translate(Vector2.up * speed * Time.deltaTime);
+    }
+
+    private IEnumerator DestroyTime()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        Destroy(this.gameObject);
     }
 }
