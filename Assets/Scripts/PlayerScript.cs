@@ -7,9 +7,17 @@ public class PlayerScript : CharacterController
 {
     private Camera mainCam;
 
+    [SerializeField] private SpriteRenderer playerRenderer;
+    [SerializeField] private Animator playerAnimator;
+
+    [SerializeField] private SpriteRenderer weaponRenderer;
+    [SerializeField] private Transform weaponPivot;
+
+    public GameObject bulletObject;
+    [SerializeField] private Transform bulletSpawnPoint;
+
     private Rigidbody2D rb;
-    [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private Animator anim;
+    private float rotZ = 0f;
 
     private void Awake()
     {
@@ -21,6 +29,7 @@ public class PlayerScript : CharacterController
     {
         OnMoveEvent += MoveEvent;
         OnLookEvent += LookEvent;
+        OnAttackEvent += ShootEvent;
     }
 
     private void Update()
@@ -28,13 +37,22 @@ public class PlayerScript : CharacterController
         mainCam.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 
+    #region MOVE
     public void OnMove(InputValue value)
     {
         Vector2 moveInput = value.Get<Vector2>().normalized;
-        anim.SetBool("IsMoving", (moveInput.magnitude != 0));
+        playerAnimator.SetBool("IsMoving", (moveInput.magnitude != 0));
         CallMoveEvent(moveInput);
     }
 
+    private void MoveEvent(Vector2 direction)
+    {
+        rb.velocity = direction * 5;
+    }
+
+    #endregion
+
+    #region LOOK
     public void OnLook(InputValue value)
     {
         Vector2 worldPos = mainCam.ScreenToWorldPoint(value.Get<Vector2>());
@@ -44,14 +62,27 @@ public class PlayerScript : CharacterController
             CallLookEvent(newAim);
     }
 
-    private void MoveEvent(Vector2 direction)
-    {
-        rb.velocity = direction * 5;
-    }
-
     private void LookEvent(Vector2 direction)
     {
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        sr.flipX = Mathf.Abs(rotZ) > 90f;
+        rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        weaponRenderer.flipY = Mathf.Abs(rotZ) > 90f;
+        playerRenderer.flipX = Mathf.Abs(rotZ) > 90f;
+        weaponPivot.rotation = Quaternion.Euler(0, 0, rotZ);
     }
+
+    #endregion
+
+    #region SHOOT
+    public void OnShoot(InputValue value)
+    {
+        if (value.isPressed)
+            CallAttackEvent();
+    }
+
+    private void ShootEvent()
+    {
+        Instantiate(bulletObject, bulletSpawnPoint.position, Quaternion.Euler(0, 0, rotZ - 90));
+    }
+
+    #endregion
 }
