@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -81,12 +82,26 @@ public class PlayerScript : CharacterController
         {
             CallAttackEvent();
             attackRecent = 0f;
-        }            
+        }
     }
 
     private void ShootEvent()
     {
         Instantiate(bulletObject, bulletSpawnPoint.position, Quaternion.Euler(0, 0, rotZ - 90));
+    }
+    #endregion
+
+    #region SCROLL
+    public void OnScroll(InputValue value)
+    {
+        if (value.Get<float>() > 0)
+        {
+            mainCam.orthographicSize -= (mainCam.orthographicSize > 2) ? 0.5f : 0f;
+        }
+        else if (value.Get<float>() < 0)
+        {
+            mainCam.orthographicSize += (mainCam.orthographicSize < 15) ? 0.5f : 0f;
+        }
     }
     #endregion
 }
