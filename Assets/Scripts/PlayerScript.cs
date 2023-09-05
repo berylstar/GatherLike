@@ -16,6 +16,9 @@ public class PlayerScript : CharacterController
     public GameObject bulletObject;
     [SerializeField] private Transform bulletSpawnPoint;
 
+    public float attackCooltime;
+    private float attackRecent = 0f;
+
     private Rigidbody2D rb;
     private float rotZ = 0f;
 
@@ -35,6 +38,7 @@ public class PlayerScript : CharacterController
     private void Update()
     {
         mainCam.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        attackRecent += Time.deltaTime;
     }
 
     #region MOVE
@@ -49,7 +53,6 @@ public class PlayerScript : CharacterController
     {
         rb.velocity = direction * 5;
     }
-
     #endregion
 
     #region LOOK
@@ -69,20 +72,21 @@ public class PlayerScript : CharacterController
         playerRenderer.flipX = Mathf.Abs(rotZ) > 90f;
         weaponPivot.rotation = Quaternion.Euler(0, 0, rotZ);
     }
-
     #endregion
 
     #region SHOOT
     public void OnShoot(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && attackRecent > attackCooltime)
+        {
             CallAttackEvent();
+            attackRecent = 0f;
+        }            
     }
 
     private void ShootEvent()
     {
         Instantiate(bulletObject, bulletSpawnPoint.position, Quaternion.Euler(0, 0, rotZ - 90));
     }
-
     #endregion
 }

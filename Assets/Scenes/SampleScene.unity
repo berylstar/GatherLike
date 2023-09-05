@@ -4630,7 +4630,7 @@ GameObject:
   - component: {fileID: 1310342612}
   m_Layer: 0
   m_Name: Collison
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7421,6 +7421,7 @@ MonoBehaviour:
   weaponPivot: {fileID: 19721037}
   bulletObject: {fileID: 6269892186739513888, guid: d0535d31943a30d49906c2b05a6716f4, type: 3}
   bulletSpawnPoint: {fileID: 190206300}
+  attackCooltime: 0.5
 --- !u!212 &1686751822
 SpriteRenderer:
   m_ObjectHideFlags: 0
