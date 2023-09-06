@@ -228,5 +228,6 @@ MonoBehaviour:
   speed: 3
   HP: 2
   rb: {fileID: -5100916265642181214}
+  bc: {fileID: 3640544609151373888}
   monsterRenderer: {fileID: 374148517691804677}
   monsterAnimator: {fileID: 1366060311032679844}

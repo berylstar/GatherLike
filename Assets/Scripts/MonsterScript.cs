@@ -8,6 +8,7 @@ public class MonsterScript : MonoBehaviour
     public int HP;
 
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private BoxCollider2D bc;
     [SerializeField] private SpriteRenderer monsterRenderer;
     [SerializeField] private Animator monsterAnimator;
 
@@ -35,12 +36,14 @@ public class MonsterScript : MonoBehaviour
         if (collision.CompareTag("Bullet"))
         {
             monsterAnimator.SetTrigger("IsHit");
-            StartCoroutine(Hit());
 
             HP -= 1;
 
             if (HP <= 0)
-                Destroy(this.gameObject);
+                StartCoroutine(Disappear());
+            else
+                StartCoroutine(Hit());
+                
         }
     }
 
@@ -49,5 +52,16 @@ public class MonsterScript : MonoBehaviour
         monsterRenderer.color = new Color32(200, 100, 100, 255);
         yield return new WaitForSecondsRealtime(0.2f);
         monsterRenderer.color = Color.white;
+    }
+
+    private IEnumerator Disappear()
+    {
+        speed = 0f;
+        bc.enabled = false;
+        monsterRenderer.color = new Color32(255, 255, 255, 100);
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        Destroy(this.gameObject);
     }
 }
