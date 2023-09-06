@@ -8,25 +8,28 @@ public class PlayerScript : CharacterController
 {
     private Camera mainCam;
 
+    [Header("Player")]
     [SerializeField] private SpriteRenderer playerRenderer;
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Rigidbody2D playerRigidbody;
 
-    [SerializeField] private SpriteRenderer weaponRenderer;
-    [SerializeField] private Transform weaponPivot;
-
-    public GameObject bulletObject;
-    [SerializeField] private Transform bulletSpawnPoint;
-
+    public float playerSpeed;
     public float attackCooltime;
     private float attackRecent = 0f;
 
-    private Rigidbody2D rb;
     private float rotZ = 0f;
+
+    [Header("Weapon")]
+    [SerializeField] private SpriteRenderer weaponRenderer;
+    [SerializeField] private Transform weaponPivot;
+
+    [Header("Bullet")]
+    public GameObject bulletObject;
+    [SerializeField] private Transform bulletSpawnPoint;
 
     private void Awake()
     {
         mainCam = Camera.main;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -52,7 +55,9 @@ public class PlayerScript : CharacterController
 
     private void MoveEvent(Vector2 direction)
     {
-        rb.velocity = direction * 5;
+        playerRigidbody.velocity = direction * playerSpeed;
+        // playerRigidbody.MovePosition(Vector3.Lerp(transform.position, (Vector3)direction, Time.deltaTime * playerSpeed));
+        // playerRigidbody.MovePosition(transform.position + (Vector3)direction);
     }
     #endregion
 

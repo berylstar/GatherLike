@@ -50,3 +50,6 @@ TagManager:
   - name: Bullet
     uniqueID: 973411643
     locked: 0
+  - name: Canvas
+    uniqueID: 3484383607
+    locked: 0
