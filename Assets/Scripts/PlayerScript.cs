@@ -11,8 +11,9 @@ public class PlayerScript : CharacterController
     [Header("Player")]
     [SerializeField] private SpriteRenderer playerRenderer;
     [SerializeField] private Animator playerAnimator;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D playerRigidbody;
 
+    public float playerSpeed;
     public float attackCooltime;
     private float attackRecent = 0f;
 
@@ -54,7 +55,9 @@ public class PlayerScript : CharacterController
 
     private void MoveEvent(Vector2 direction)
     {
-        rb.velocity = direction * 5;
+        playerRigidbody.velocity = direction * playerSpeed;
+        // playerRigidbody.MovePosition(Vector3.Lerp(transform.position, (Vector3)direction, Time.deltaTime * playerSpeed));
+        // playerRigidbody.MovePosition(transform.position + (Vector3)direction);
     }
     #endregion
 
