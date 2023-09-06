@@ -24,7 +24,10 @@ public class BulletScript : MonoBehaviour
             onWall = true;
             StartCoroutine(DestroyTime());
         }
-            
+        else if (collision.CompareTag("Monster") && !onWall)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Update()
@@ -32,7 +35,7 @@ public class BulletScript : MonoBehaviour
         if (onWall)
             return;
 
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector2.up);
     }
 
     private IEnumerator DestroyTime()
