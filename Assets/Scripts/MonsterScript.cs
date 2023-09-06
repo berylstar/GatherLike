@@ -43,14 +43,18 @@ public class MonsterScript : MonoBehaviour
                 StartCoroutine(Disappear());
             else
                 StartCoroutine(Hit());
-                
         }
     }
 
     private IEnumerator Hit()
     {
+        float temp = speed;
+        speed = 0f;
         monsterRenderer.color = new Color32(200, 100, 100, 255);
+
         yield return new WaitForSecondsRealtime(0.2f);
+
+        speed = temp;
         monsterRenderer.color = Color.white;
     }
 
@@ -60,7 +64,11 @@ public class MonsterScript : MonoBehaviour
         bc.enabled = false;
         monsterRenderer.color = new Color32(255, 255, 255, 100);
 
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        monsterRenderer.color = new Color32(255, 255, 255, 50);
+
+        yield return new WaitForSecondsRealtime(0.5f);
 
         Destroy(this.gameObject);
     }
