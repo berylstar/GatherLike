@@ -4455,7 +4455,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784f4f67801b9c147b91edaa2575df36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 8500199211297586162, guid: ab360a97cf4876d4dbdf10cd2fb1f955, type: 3}
+  monsters:
+  - {fileID: 8500199211297586162, guid: ab360a97cf4876d4dbdf10cd2fb1f955, type: 3}
+  - {fileID: 8500199211297586162, guid: 323d07dfeed757b4990e4be7a72ba48b, type: 3}
+  - {fileID: 8500199211297586162, guid: ff411c7e2f1fd2f4596f26f3996b46f5, type: 3}
 --- !u!4 &526830878
 Transform:
   m_ObjectHideFlags: 0
@@ -4500,7 +4503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784f4f67801b9c147b91edaa2575df36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 8500199211297586162, guid: ab360a97cf4876d4dbdf10cd2fb1f955, type: 3}
+  monsters:
+  - {fileID: 8500199211297586162, guid: ab360a97cf4876d4dbdf10cd2fb1f955, type: 3}
+  - {fileID: 8500199211297586162, guid: 323d07dfeed757b4990e4be7a72ba48b, type: 3}
+  - {fileID: 8500199211297586162, guid: ff411c7e2f1fd2f4596f26f3996b46f5, type: 3}
 --- !u!4 &650152763
 Transform:
   m_ObjectHideFlags: 0
@@ -4560,7 +4566,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784f4f67801b9c147b91edaa2575df36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 8500199211297586162, guid: ab360a97cf4876d4dbdf10cd2fb1f955, type: 3}
+  monsters:
+  - {fileID: 8500199211297586162, guid: ab360a97cf4876d4dbdf10cd2fb1f955, type: 3}
+  - {fileID: 8500199211297586162, guid: 323d07dfeed757b4990e4be7a72ba48b, type: 3}
+  - {fileID: 8500199211297586162, guid: ff411c7e2f1fd2f4596f26f3996b46f5, type: 3}
 --- !u!1 &894606033
 GameObject:
   m_ObjectHideFlags: 0

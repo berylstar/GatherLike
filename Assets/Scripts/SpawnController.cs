@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    public GameObject monster;
+    public GameObject[] monsters;
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class SpawnController : MonoBehaviour
         {
             if (transform.childCount < 3)
             {
-                Instantiate(monster, transform.position, Quaternion.identity, transform);
+                Instantiate(monsters[Random.Range(0, monsters.Length)], transform.position, Quaternion.identity, transform);
             }
 
             yield return new WaitForSecondsRealtime(3f);
