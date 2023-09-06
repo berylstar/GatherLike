@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -609808511
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 377e209da51e8ff4eb98b235b49eea49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98bc39139247d1846900cf0ecfdb42ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 8283054264393028897}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 6de28b2faaeecfe46b1a0e994a039546, type: 2}
+  m_Controller: {fileID: 22100000, guid: 637c6a7625bd58a478d185c7291dce5e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 3640544609151373888}
   - component: {fileID: 7533317227535276766}
   m_Layer: 0
-  m_Name: Lizard
+  m_Name: Pumpkin
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff63b233aecf5e45ad942c2b16ad86e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  HP: 2
+  speed: 2
+  HP: 3
   rb: {fileID: -5100916265642181214}
   monsterRenderer: {fileID: 374148517691804677}
   monsterAnimator: {fileID: 1366060311032679844}

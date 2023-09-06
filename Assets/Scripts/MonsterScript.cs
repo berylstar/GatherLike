@@ -28,7 +28,6 @@ public class MonsterScript : MonoBehaviour
             rb.velocity = Vector2.zero;
         else
             rb.velocity = (speed * targetVector.normalized);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,6 +38,7 @@ public class MonsterScript : MonoBehaviour
             StartCoroutine(Hit());
 
             HP -= 1;
+
             if (HP <= 0)
                 Destroy(this.gameObject);
         }
