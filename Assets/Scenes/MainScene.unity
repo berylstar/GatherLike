@@ -8498,6 +8498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRenderer: {fileID: 894606036}
   playerAnimator: {fileID: 894606035}
+  rb: {fileID: 1686751818}
   weaponRenderer: {fileID: 959634391}
   weaponPivot: {fileID: 19721037}
   bulletObject: {fileID: 6269892186739513888, guid: d0535d31943a30d49906c2b05a6716f4, type: 3}

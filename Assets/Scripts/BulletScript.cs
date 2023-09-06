@@ -5,17 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public float speed;
-
-    private Rigidbody2D rb;
-    private BoxCollider2D bc;
-
     private bool onWall = false;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,7 +20,7 @@ public class BulletScript : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (onWall)
             return;

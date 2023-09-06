@@ -19,7 +19,7 @@ public class MonsterScript : MonoBehaviour
         target = GameObject.Find("Player").transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 targetVector = target.position - transform.position;
 
